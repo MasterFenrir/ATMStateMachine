@@ -34,11 +34,11 @@ public class HasCorrectPin extends AbstractATMState {
      */
     @Override
     public void requestAmount(ATM atm, int request) {
-        if(request < 50){
+        if (atm.removeCash(request)) {
             System.out.println("Request granted");
             atm.setState(HasAmount.getInstance());
         } else {
-            System.out.println("Not enough money");
+            System.out.println("Not enough money available");
         }
     }
 }

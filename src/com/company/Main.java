@@ -3,6 +3,30 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Test the proxy");
+        proxyTest();
+
+        System.out.println("\nTest the states");
+        stateTest();
+    }
+
+    private static void proxyTest() {
+        ATMProxy proxy = new ATMProxy();
+
+        System.out.println("Get the amount and state");
+        System.out.println(proxy.getCashInMachine() + " " + proxy.getATMState());
+
+        ATM atm = proxy.getATM();
+
+        atm.insertCard();
+        atm.insertPin(1234);
+        atm.requestAmount(300);
+
+        System.out.println("Get the new amount and state");
+        System.out.println(proxy.getCashInMachine() + " " + proxy.getATMState());
+    }
+
+    private static void stateTest() {
         ATM atm = new ATM();
 
         System.out.println("Test where everything goes well");
