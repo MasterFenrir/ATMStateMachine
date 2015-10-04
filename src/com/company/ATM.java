@@ -12,33 +12,27 @@ public class ATM {
     }
 
     public void insertCard(){
-        ATMState tmp = currentState.insertCard();
-        setState(tmp);
+        setState(currentState.insertCard());
     }
 
     public void ejectCard(){
-        ATMState tmp = currentState.ejectCard();
-        setState(tmp);
+        setState(currentState.ejectCard());
     }
 
     public void insertPin(int pin){
-        ATMState tmp = currentState.insertPin(pin);
-        setState(tmp);
+        setState(currentState.insertPin(pin));
     }
 
     public void requestAmount(int amount){
-        ATMState tmp = currentState.requestAmount(amount);
-        setState(tmp);
+        setState(currentState.requestAmount(amount));
     }
 
     public void disableATM(){
-        ATMState tmp = currentState.disable();
-        setState(tmp);
+        setState(currentState.disable());
     }
 
     public void enableATM(){
-        ATMState tmp = currentState.enable();
-        setState(tmp);
+        setState(currentState.enable());
     }
 
     private void setState(ATMState newState){
