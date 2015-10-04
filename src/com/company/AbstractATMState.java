@@ -4,6 +4,7 @@ package com.company;
  * Created by Sander on 4-10-2015.
  */
 public class AbstractATMState implements ATMState {
+
     /**
      * Insert a card
      *

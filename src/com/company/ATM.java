@@ -13,45 +13,37 @@ public class ATM {
 
     public void insertCard(){
         ATMState tmp = currentState.insertCard();
-        if(tmp != null){
-            currentState = tmp;
-        }
+        setState(tmp);
     }
 
     public void ejectCard(){
         ATMState tmp = currentState.ejectCard();
-        if(tmp != null){
-            currentState = tmp;
-        }
+        setState(tmp);
     }
 
     public void insertPin(int pin){
         ATMState tmp = currentState.insertPin(pin);
-        if(tmp != null){
-            currentState = tmp;
-        }
+        setState(tmp);
     }
 
-    public int requestAmount(int amount){
+    public void requestAmount(int amount){
         ATMState tmp = currentState.requestAmount(amount);
-        if(tmp != null){
-            currentState = tmp;
-            return amount;
-        }
-        return 0;
+        setState(tmp);
     }
 
     public void disableATM(){
         ATMState tmp = currentState.disable();
-        if(tmp != null){
-            currentState = tmp;
-        }
+        setState(tmp);
     }
 
     public void enableATM(){
         ATMState tmp = currentState.enable();
-        if(tmp != null){
-            currentState = tmp;
+        setState(tmp);
+    }
+
+    private void setState(ATMState newState){
+        if(newState != null){
+            currentState = newState;
         }
     }
 }
