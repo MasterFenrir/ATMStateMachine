@@ -11,30 +11,20 @@ public class HasAmount extends AbstractATMState {
     private static ATMState instance;
 
     /**
+     * Private constructor
+     */
+    private HasAmount() {
+    }
+
+    /**
      * Singleton getter
      * @return The ATM state
      */
-    public static ATMState getInstance(){
-        if(instance == null){
+    public static ATMState getInstance() {
+        if (instance == null) {
             instance = new HasAmount();
         }
         return instance;
     }
 
-    /**
-     * Private constructor
-     */
-    private HasAmount(){}
-
-
-    /**
-     * Eject a card
-     *
-     * @return The new ATMState, can be null if this action is not valid in the current state
-     */
-    @Override
-    public ATMState ejectCard() {
-        System.out.println("Ejecting card");
-        return Idle.getInstance();
-    }
 }

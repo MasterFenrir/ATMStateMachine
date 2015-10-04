@@ -11,40 +11,46 @@ public class Idle extends AbstractATMState {
     private static ATMState instance;
 
     /**
+     * Private constructor
+     */
+    private Idle() {
+    }
+
+    /**
      * Singleton getter
+     *
      * @return The ATM state
      */
-    public static ATMState getInstance(){
-        if(instance == null){
+    public static ATMState getInstance() {
+        if (instance == null) {
             instance = new Idle();
         }
         return instance;
     }
 
     /**
-     * Private constructor
-     */
-    private Idle(){}
-
-    /**
      * Insert a card
      *
-     * @return The new ATMState, can be null if this action is not valid in the current state
      */
     @Override
-    public ATMState insertCard() {
+    public void insertCard(ATM atm) {
         System.out.println("Card inserted");
-        return HasCard.getInstance();
+        atm.setState(HasCard.getInstance());
+    }
+
+
+    @Override
+    public void ejectCard(ATM atm) {
+        printError();
     }
 
     /**
      * Disable the current ATM
      *
-     * @return The new state if disabling is possible now, otherwise null
      */
     @Override
-    public ATMState disable() {
+    public void disable(ATM atm) {
         System.out.println("Disabling the ATM");
-        return OutOfService.getInstance();
+        atm.setState(OutOfService.getInstance());
     }
 }

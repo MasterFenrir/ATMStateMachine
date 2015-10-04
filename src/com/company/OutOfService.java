@@ -11,20 +11,21 @@ public class OutOfService extends AbstractATMState {
     private static ATMState instance;
 
     /**
+     * Private constructor
+     */
+    private OutOfService() {
+    }
+
+    /**
      * Singleton getter
      * @return The ATM state
      */
-    public static ATMState getInstance(){
-        if(instance == null){
+    public static ATMState getInstance() {
+        if (instance == null) {
             instance = new OutOfService();
         }
         return instance;
     }
-
-    /**
-     * Private constructor
-     */
-    private OutOfService(){}
 
     /**
      * Enable the current ATM
@@ -32,8 +33,8 @@ public class OutOfService extends AbstractATMState {
      * @return The new state if enabling is possible now, otherwise null
      */
     @Override
-    public ATMState enable() {
+    public void enable(ATM atm) {
         System.out.println("Enabling the ATM");
-        return Idle.getInstance();
+        atm.setState(Idle.getInstance());
     }
 }

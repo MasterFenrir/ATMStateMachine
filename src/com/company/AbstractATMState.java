@@ -8,75 +8,65 @@ public class AbstractATMState implements ATMState {
     /**
      * Insert a card
      *
-     * @return The new ATMState, can be null if this action is not valid in the current state
+     * @return The new void, can be null if this action is not valid in the current state
      */
     @Override
-    public ATMState insertCard() {
+    public void insertCard(ATM atm) {
         printError();
-        return null;
     }
 
     /**
      * Eject a card
      *
-     * @return The new ATMState, can be null if this action is not valid in the current state
      */
     @Override
-    public ATMState ejectCard() {
-        printError();
-        return null;
+    public void ejectCard(ATM atm) {
+        System.out.println("Ejecting card");
+        atm.setState(Idle.getInstance());
     }
 
     /**
      * Insert the PIN
      *
      * @param pin The PIN
-     * @return The new ATMState, can be null if this action is not valid in the current state or the PIN is incorrect
      */
     @Override
-    public ATMState insertPin(int pin) {
+    public void insertPin(ATM atm, int pin) {
         printError();
-        return null;
     }
 
     /**
      * Request a given amount of money
      *
      * @param request The amount of money
-     * @return The new ATMState, can be null if this action is not valid in the current state or if the money is not available
      */
     @Override
-    public ATMState requestAmount(int request) {
+    public void requestAmount(ATM atm, int request) {
         printError();
-        return null;
     }
 
     /**
      * Disable the current ATM
      *
-     * @return The new state if disabling is possible now, otherwise null
      */
     @Override
-    public ATMState disable() {
+    public void disable(ATM atm) {
         printError();
-        return null;
     }
 
     /**
      * Enable the current ATM
      *
-     * @return The new state if enabling is possible now, otherwise null
      */
     @Override
-    public ATMState enable() {
+    public void enable(ATM atm) {
         printError();
-        return null;
     }
 
     /**
      * Print an error when this action is not allowed
      */
-    private void printError(){
+    protected void printError() {
         System.out.println("Not possible in the current state");
     }
 }
